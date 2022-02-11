@@ -127,17 +127,40 @@ function atoc(n, axis) {
   if (axis === 'y') return (1 - n) * 300 * zoom + (500 - 300 * zoom) / 2;
 }
 
-canvas.addEventListener('mousedown', (evt) => {
-  const x = evt.offsetX;
-  const y = evt.offsetY;
+function getOffset(el) {
+  var rect = el.getBoundingClientRect(),
+  scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+  scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+}
+
+function handleMouseDown(evt) {
+  let x, y;
+
+  if (evt.type === 'mousedown') {
+    x = evt.offsetX;
+    y = evt.offsetY;
+  } else {
+    const offset = getOffset(document.querySelector('#main-canvas'));
+    x = evt.touches[0].pageX - offset.left;
+    y = evt.touches[0].pageY - offset.top;
+  }
   
   checkP2Click(x, y);
   checkP3Click(x, y);
-});
+}
 
-canvas.addEventListener('mousemove', (evt) => {
-  const x = evt.offsetX;
-  const y = evt.offsetY;
+function handleMouseMove(evt) {
+  let x, y;
+
+  if (evt.type === 'mousemove') {
+    x = evt.offsetX;
+    y = evt.offsetY;
+  } else {
+    const offset = getOffset(document.querySelector('#main-canvas'));
+    x = evt.touches[0].pageY - offset.left;
+    y = evt.touches[0].pageY - offset.top;
+  }
   
   if (movingP2) {
     p2.y = ctoa(y + oy, 'y');
@@ -150,12 +173,23 @@ canvas.addEventListener('mousemove', (evt) => {
     updateCanvas();
     fillOutput();
   }
-});
 
-document.addEventListener('mouseup', (evt) => {
+  evt.preventDefault();
+}
+
+function handleMouseUp(evt) {
   movingP2 = false;
   movingP3 = false;
-});
+}
+
+canvas.addEventListener('mousedown', handleMouseDown);
+canvas.addEventListener('touchstart', handleMouseDown);
+
+canvas.addEventListener('mousemove', handleMouseMove);
+canvas.addEventListener('touchmove', handleMouseMove);
+
+document.addEventListener('mouseup', handleMouseUp);
+document.addEventListener('touchend', handleMouseUp);
 
 document.querySelector('#name').addEventListener('input', (evt) => {
   fillOutput();
