@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BezierFN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/vs2015.min.css">
+    <script src="assets/js/highlight.min.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="heading">
+        <h1>Cinder's Easing Function Generator</h1>
+    </div>
+    <div class="container">
+        <canvas id="main-canvas" width=300 height=500></canvas>
+        <div class="settings">
+            <span class="setting">
+                <span>Function Name</span>
+            <input type="text" name="name" placeholder="ease" id="name" autocomplete="off" data-form-type="other">
+            </span>
+            <span class="setting">
+                <span>Zoom</span>
+                <span class="btn-group">
+                    <button class="btn" id="zoom-out">-</button>
+                    <button class="btn disabled" id="zoom-in">+</button>
+                </span>
+            </span>
+            <span class="setting">
+                <span>Language</span>
+                <span class="btn-group">
+                    <button class="btn active" id="js">JS</button>
+                    <button class="btn" id="ts">TS</button>
+                </span>
+            </span>
+        </div>
+        <div class="generated">
+            <pre id="output"><code>function()</code></pre>
+            <button class="btn" id="copy">Copy</button>
+        </div>
+
+    </div>
+</body>
+
+</html>

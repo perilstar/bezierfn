@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    background-color: #1e1e1e;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+.heading {
+    border-bottom: 2px solid #2ecc71;
+    padding-left: 100px;
+}
+
+.settings {
+    margin: 14px 0;
+    display: flex;
+    align-items: center;
+    min-height: 90px;
+}
+
+.setting {
+    display: inline-flex;
+    margin-right: 30px;
+    flex-direction: column;
+    height: 100%;
+}
+
+.setting span {
+    margin-bottom: 7px;
+}
+
+#main-canvas {
+    /* padding: 20px; */
+    border: 1px solid #ffffff80;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+#output {
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 3px;
+    font-size: 1.3em;
+    margin: 0 20px 0 0;
+}
+
+input {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #ffffff80;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+#copy {
+    margin-top: 10px;
+}
+
+.btn {
+    background-color: transparent;
+    border-radius: 28px;
+    border: 2px solid #2ecc71;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-family: Arial;
+    font-size: 24px;
+    padding: 16px 31px;
+    line-height: 0.5em;
+}
+
+.btn:hover {
+    background-color: #FFFFFF10;
+}
+
+.btn.active {
+    background-color: #FFFFFF30;
+}
+
+.btn.disabled {
+    color: #ffffff40;
+    cursor: not-allowed;
+}
+
+.btn-group {
+    font-size: 0;
+    text-align: center;
+}
+
+@media (min-width: 576px) {
+    .container {
+        width: 500px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 600px; 
+    }
+
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 700px;
+    }
+        
+    .btn-group .btn {
+        border-radius: 0;
+        border-left: none;
+    }
+    
+    .btn-group .btn:first-child {
+        border-left: 2px solid #2ecc71;
+        border-radius: 28px 0 0 28px;
+    }
+    
+    .btn-group .btn:last-child {
+        border-radius: 0 28px 28px 0;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 900px;
+    }
+}
