@@ -15,7 +15,7 @@ body {
 }
 
 .settings {
-    margin: 14px 0;
+    margin: 10px 0;
     display: flex;
     align-items: center;
     min-height: 90px;
@@ -36,7 +36,7 @@ body {
     /* padding: 20px; */
     border: 1px solid #ffffff80;
     border-radius: 20px;
-    margin: 20px;
+    margin: 20px 0 5px 0;
 }
 
 #output {

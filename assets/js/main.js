@@ -24,7 +24,8 @@ function fillOutput() {
   const fnName = document.querySelector('#name').value || 'ease';
   const outputElement = document.querySelector('#output > code');
 
-  code = `function ${fnName}(t${mode === 'ts' ? ': number' : ''})${mode === 'ts' ? ': number' : ''} {
+  code = `// t: number in range [0..1], returns: number in range [0..1]
+function ${fnName}(t${mode === 'ts' ? ': number' : ''})${mode === 'ts' ? ': number' : ''} {
   return ${Math.round(p2.y* 3 * 1000) / 1000} * (1 - x) ** 2 * x + ${Math.round(p3.y * 3 * 1000) / 1000} * (1 - x) * x ** 2 + x ** 3;
 }`;
 
