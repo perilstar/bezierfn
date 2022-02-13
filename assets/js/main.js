@@ -1,7 +1,7 @@
 const canvas = document.querySelector('#main-canvas');
 const ctx = canvas.getContext('2d');
 
-const square = document.querySelector('#square');
+const circle = document.querySelector('#circle');
 
 let animationStartTime = null;
 let previousTimeStamp = null;
@@ -143,7 +143,7 @@ function animate(timestamp) {
 
   if (previousTimeStamp !== timestamp) {
     const xOff = animateFrom + animationDirection * ease(t) * 300;
-    square.style.left = `${xOff}px`;
+    circle.style.left = `${xOff}px`;
   }
 
   if (t > 1) {
