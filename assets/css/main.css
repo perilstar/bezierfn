@@ -15,6 +15,7 @@ body {
 }
 
 .settings {
+    position: relative;
     margin: 10px 0;
     display: flex;
     align-items: center;
@@ -91,6 +92,29 @@ input {
     text-align: center;
 }
 
+.animation {
+    margin: 20px 0 0 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 200px;
+    width: 350px;
+}
+
+#animate {
+    position: absolute;
+    top: 0;
+}
+
+#square {
+    display: inline-block;
+    background-color: #e74c3c;
+    height: 50px;
+    width: 50px;
+    position: relative;
+}
+
 @media (min-width: 576px) {
     .container {
         width: 500px;
@@ -107,6 +131,12 @@ input {
 @media (min-width: 992px) {
     .container {
         width: 700px;
+    }
+
+    .animation {
+        display: inline-flex;
+        height: 500px;
+        position: absolute;
     }
         
     .btn-group .btn {

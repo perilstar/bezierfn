@@ -1,6 +1,13 @@
 const canvas = document.querySelector('#main-canvas');
 const ctx = canvas.getContext('2d');
 
+const square = document.querySelector('#square');
+
+let animationStartTime = null;
+let previousTimeStamp = null;
+let animateFrom = 0;
+let animationDirection = 1;
+
 let code;
 
 let mode = 'js';
@@ -20,13 +27,15 @@ let p3 = {
   y: 0.3
 };
 
+let a, b;
+
 function fillOutput() {
   const fnName = document.querySelector('#name').value || 'ease';
   const outputElement = document.querySelector('#output > code');
 
   code = `// t: number in range [0..1], returns 0 at t=0 and 1 at t=1
 function ${fnName}(t${mode === 'ts' ? ': number' : ''})${mode === 'ts' ? ': number' : ''} {
-  return ${Math.round(p2.y* 3 * 1000) / 1000} * (1 - x) ** 2 * x + ${Math.round(p3.y * 3 * 1000) / 1000} * (1 - x) * x ** 2 + x ** 3;
+  return ${Math.round(p2.y* 3 * 1000) / 1000} * (1 - t) ** 2 * t + ${Math.round(p3.y * 3 * 1000) / 1000} * (1 - t) * t ** 2 + t ** 3;
 }`;
 
   outputElement.innerHTML = code;
@@ -125,6 +134,38 @@ function ctoa(n, axis) {
 function atoc(n, axis) {
   if (axis === 'x') return n * 300;
   if (axis === 'y') return (1 - n) * 300 * zoom + (500 - 300 * zoom) / 2;
+}
+
+function animate(timestamp) {
+  console.log(timestamp);
+  if (animationStartTime === null) animationStartTime = timestamp;
+  const t = (timestamp - animationStartTime) / 1000;
+
+  if (previousTimeStamp !== timestamp) {
+    const xOff = animateFrom + animationDirection * ease(t) * 300;
+    square.style.left = `${xOff}px`;
+  }
+
+  if (t > 1) {
+    if (animateFrom === 0) {
+      animateFrom = 300;
+    } else {
+      animateFrom = 0;
+    }
+
+    animationDirection *= -1;
+
+    animationStartTime = null;
+
+    return;
+  };
+
+  previousTimeStamp = timestamp;
+  window.requestAnimationFrame(animate);
+}
+
+function ease(t) {
+  return (Math.round(a * 3 * 1000) / 1000) * (1 - t) ** 2 * t + (Math.round(b * 3 * 1000) / 1000) * (1 - t) * t ** 2 + t ** 3;
 }
 
 function getOffset(el) {
@@ -241,6 +282,12 @@ document.querySelector('#zoom-out').addEventListener('click', (evt) => {
   }
   updateCanvas();
 
+});
+
+document.querySelector('#animate').addEventListener('click', (evt) => {
+  a = p2.y;
+  b = p3.y;
+  window.requestAnimationFrame(animate);
 });
 
 updateCanvas();
