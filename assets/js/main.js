@@ -18,12 +18,12 @@ let movingP3 = false;
 let ox, oy;
 
 let p2 = {
-  x: 1/3,
+  x: 1 / 3,
   y: 0.7
 };
 
 let p3 = {
-  x: 2/3,
+  x: 2 / 3,
   y: 0.3
 };
 
@@ -35,7 +35,7 @@ function fillOutput() {
 
   code = `// t: number in range [0..1], returns 0 at t=0 and 1 at t=1
 function ${fnName}(t${mode === 'ts' ? ': number' : ''})${mode === 'ts' ? ': number' : ''} {
-  return ${Math.round(p2.y* 3 * 1000) / 1000} * (1 - t) ** 2 * t + ${Math.round(p3.y * 3 * 1000) / 1000} * (1 - t) * t ** 2 + t ** 3;
+  return ${Math.round(p2.y * 3 * 1000) / 1000} * (1 - t) ** 2 * t + ${Math.round(p3.y * 3 * 1000) / 1000} * (1 - t) * t ** 2 + t ** 3;
 }`;
 
   outputElement.innerHTML = code;
@@ -84,8 +84,8 @@ function drawGuides() {
   ctx.lineWidth = 3;
   // drawLine(0, atoc(1/3), canvas.width, atoc(1/3), 'y');
   // drawLine(0, atoc(2/3), canvas.width, atoc(2/3), 'y');
-  drawLine(atoc(1/3, 'x'), 0, atoc(1/3, 'x'), canvas.height);
-  drawLine(atoc(2/3, 'x'), 0, atoc(2/3, 'x'), canvas.height);
+  drawLine(atoc(1 / 3, 'x'), 0, atoc(1 / 3, 'x'), canvas.height);
+  drawLine(atoc(2 / 3, 'x'), 0, atoc(2 / 3, 'x'), canvas.height);
 }
 
 function drawLine(x1, y1, x2, y2) {
@@ -94,7 +94,7 @@ function drawLine(x1, y1, x2, y2) {
   ctx.moveTo(x1, y1);
   ctx.lineTo(x2, y2);
   ctx.stroke();
-} 
+}
 
 function drawBezier() {
   ctx.strokeStyle = '#1abc9c'
@@ -170,8 +170,8 @@ function ease(t) {
 
 function getOffset(el) {
   var rect = el.getBoundingClientRect(),
-  scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-  scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
 }
 
@@ -186,7 +186,7 @@ function handleMouseDown(evt) {
     x = evt.touches[0].pageX - offset.left;
     y = evt.touches[0].pageY - offset.top;
   }
-  
+
   checkP2Click(x, y);
   checkP3Click(x, y);
 }
@@ -202,13 +202,13 @@ function handleMouseMove(evt) {
     x = evt.touches[0].pageY - offset.left;
     y = evt.touches[0].pageY - offset.top;
   }
-  
+
   if (movingP2) {
     p2.y = ctoa(y + oy, 'y');
     updateCanvas();
     fillOutput();
   }
-  
+
   if (movingP3) {
     p3.y = ctoa(y + oy, 'y');
     updateCanvas();
@@ -268,7 +268,7 @@ document.querySelector('#zoom-in').addEventListener('click', (evt) => {
   if (zoom > 1) {
     zoom = 1;
     document.querySelector('#zoom-in').classList.add('disabled');
-  } 
+  }
   updateCanvas();
 
 });
