@@ -1,162 +1,163 @@
 body {
-    margin: 0;
-    background-color: #1e1e1e;
-    color: white;
-    font-family: 'Roboto', sans-serif;
+  margin: 0;
+  background-color: #1e1e1e;
+  color: white;
+  font-family: "Roboto", sans-serif;
 }
 
 .container {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .heading {
-    border-bottom: 2px solid #2ecc71;
-    padding-left: 100px;
+  border-bottom: 2px solid #2ecc71;
+  padding-left: 100px;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
 }
 
 .settings {
-    position: relative;
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-    min-height: 90px;
+  position: relative;
+  margin: 0px 0;
+  display: flex;
+  align-items: center;
+  min-height: 80px;
 }
 
 .setting {
-    display: inline-flex;
-    margin-right: 30px;
-    flex-direction: column;
-    height: 100%;
+  display: inline-flex;
+  margin-right: 30px;
+  flex-direction: column;
+  height: 100%;
 }
 
 .setting span {
-    margin-bottom: 7px;
+  margin-bottom: 7px;
 }
 
 #main-canvas {
-    /* padding: 20px; */
-    border: 1px solid #ffffff80;
-    border-radius: 20px;
-    margin: 20px 0 5px 0;
+  /* padding: 20px; */
+  border: 1px solid #ffffff80;
+  border-radius: 20px;
+  margin: 20px 0 5px 0;
 }
 
 #output {
-    border: 2px solid white;
-    border-radius: 10px;
-    padding: 3px;
-    font-size: 1.3em;
-    margin: 0 20px 0 0;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 3px;
+  font-size: 1.3em;
+  margin: 0 20px 0 0;
 }
 
 input {
-    background-color: transparent;
-    color: white;
-    border: 1px solid #ffffff80;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 1.2em;
+  background-color: transparent;
+  color: white;
+  border: 1px solid #ffffff80;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.2em;
 }
 
 #copy {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .btn {
-    background-color: transparent;
-    border-radius: 28px;
-    border: 2px solid #2ecc71;
-    display: inline-block;
-    cursor: pointer;
-    color: white;
-    font-family: Arial;
-    font-size: 24px;
-    padding: 16px 31px;
-    line-height: 0.5em;
+  background-color: transparent;
+  border-radius: 28px;
+  border: 2px solid #2ecc71;
+  display: inline-block;
+  cursor: pointer;
+  color: white;
+  font-family: Arial;
+  font-size: 24px;
+  padding: 16px 31px;
+  line-height: 0.5em;
 }
 
 .btn:hover {
-    background-color: #FFFFFF10;
+  background-color: #ffffff10;
 }
 
 .btn.active {
-    background-color: #FFFFFF30;
+  background-color: #ffffff30;
 }
 
 .btn.disabled {
-    color: #ffffff40;
-    cursor: not-allowed;
+  color: #ffffff40;
+  cursor: not-allowed;
 }
 
 .btn-group {
-    font-size: 0;
-    text-align: center;
+  font-size: 0;
+  text-align: center;
 }
 
 .animation {
-    margin: 20px 0 0 20px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 200px;
-    width: 350px;
+  margin: 20px 0 0 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px;
+  width: 350px;
 }
 
 #animate {
-    position: absolute;
-    top: 0;
+  position: absolute;
+  top: 0;
 }
 
 #circle {
-    display: inline-block;
-    background-color: #e74c3c;
-    height: 50px;
-    width: 50px;
-    position: relative;
-    border-radius: 100%;
+  display: inline-block;
+  background-color: #e74c3c;
+  height: 50px;
+  width: 50px;
+  position: relative;
+  border-radius: 100%;
 }
 
 @media (min-width: 576px) {
-    .container {
-        width: 500px;
-    }
+  .container {
+    width: 500px;
+  }
 }
 
 @media (min-width: 768px) {
-    .container {
-        width: 600px; 
-    }
-
+  .container {
+    width: 600px;
+  }
 }
 
 @media (min-width: 992px) {
-    .container {
-        width: 700px;
-    }
+  .container {
+    width: 700px;
+  }
 
-    .animation {
-        display: inline-flex;
-        height: 500px;
-        position: absolute;
-    }
-        
-    .btn-group .btn {
-        border-radius: 0;
-        border-left: none;
-    }
-    
-    .btn-group .btn:first-child {
-        border-left: 2px solid #2ecc71;
-        border-radius: 28px 0 0 28px;
-    }
-    
-    .btn-group .btn:last-child {
-        border-radius: 0 28px 28px 0;
-    }
+  .animation {
+    display: inline-flex;
+    height: 500px;
+    position: absolute;
+  }
+
+  .btn-group .btn {
+    border-radius: 0;
+    border-left: none;
+  }
+
+  .btn-group .btn:first-child {
+    border-left: 2px solid #2ecc71;
+    border-radius: 28px 0 0 28px;
+  }
+
+  .btn-group .btn:last-child {
+    border-radius: 0 28px 28px 0;
+  }
 }
 
 @media (min-width: 1200px) {
-    .container {
-        width: 900px;
-    }
+  .container {
+    width: 900px;
+  }
 }

@@ -126,11 +126,13 @@ function checkP3Click(x, y) {
   }
 }
 
+// coords to abstract
 function ctoa(n, axis) {
   if (axis === 'x') return n / 300;
   if (axis === 'y') return 1 - (n - (500 - 300 * zoom) / 2) / 300 / zoom;
 }
 
+// abstract to coords
 function atoc(n, axis) {
   if (axis === 'x') return n * 300;
   if (axis === 'y') return (1 - n) * 300 * zoom + (500 - 300 * zoom) / 2;
@@ -203,16 +205,47 @@ function handleMouseMove(evt) {
     y = evt.touches[0].pageY - offset.top;
   }
 
-  if (movingP2) {
-    p2.y = ctoa(y + oy, 'y');
+  const doUpdate = () => {
     updateCanvas();
     fillOutput();
   }
 
+  if (movingP2) {
+    if (evt.shiftKey) {
+      if (Math.abs((y + oy) - atoc(0, 'y')) < 10) {
+        p2.y = 0;
+        doUpdate();
+        return;
+      }
+
+      if (Math.abs((y + oy) - atoc(1, 'y')) < 10) {
+        p2.y = 1;
+        doUpdate();
+        return;
+      }
+    }
+
+    p2.y = ctoa(y + oy, 'y');
+    doUpdate();
+  }
+
   if (movingP3) {
+    if (evt.shiftKey) {
+      if (Math.abs((y + oy) - atoc(0, 'y')) < 10) {
+        p3.y = 0;
+        doUpdate();
+        return;
+      }
+
+      if (Math.abs((y + oy) - atoc(1, 'y')) < 10) {
+        p3.y = 1;
+        doUpdate();
+        return;
+      }
+    }
+
     p3.y = ctoa(y + oy, 'y');
-    updateCanvas();
-    fillOutput();
+    doUpdate();
   }
 
   evt.preventDefault();
