@@ -194,6 +194,8 @@ function handleMouseDown(evt) {
 }
 
 function handleMouseMove(evt) {
+  evt.preventDefault();
+
   let x, y;
 
   if (evt.type === 'mousemove') {
@@ -247,8 +249,6 @@ function handleMouseMove(evt) {
     p3.y = ctoa(y + oy, 'y');
     doUpdate();
   }
-
-  evt.preventDefault();
 }
 
 function handleMouseUp(evt) {
